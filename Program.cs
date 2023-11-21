@@ -1,6 +1,7 @@
 global using project.Models;
 global using project.Services.CharacterService;
 global using project.Dtos.Character;
+global using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 

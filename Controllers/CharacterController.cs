@@ -20,19 +20,34 @@ namespace project.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get(){
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
+        {
             return Ok(await _characterService.Get());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> GetSingle(int id){
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> GetSingle(int id)
+        {
             return Ok(await _characterService.GetSingle(id));
         }
 
         [HttpPost]
         [Route("CreateOne")]
-        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter){
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter)
+        {
             return Ok(await _characterService.AddCharacter(newCharacter));
+        }
+
+        [HttpPut]
+        [Route("UpdateOne")]
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
+        {
+            var response = await _characterService.UpdateCharacter(updatedCharacter);
+            if (response.Data is null)
+            {
+                return NotFound(response);
+            }
+            return Ok(response);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace project.Services.CharacterService
         Task<ServiceResponse<List<GetCharacterDto>>> Get();
         Task<ServiceResponse<GetCharacterDto>> GetSingle(int id);
         Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter);
+        Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter);
     }
 }
